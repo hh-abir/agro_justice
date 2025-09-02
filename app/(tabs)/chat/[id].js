@@ -1,28 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, FlatList, KeyboardAvoidingView, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { MaterialIcons } from '@expo/vector-icons';
+import { useLocalSearchParams, useNavigation } from 'expo-router';
 
-const AiScreen = () => {
+const ChatScreen = () => {
+  const { id } = useLocalSearchParams();
+  const navigation = useNavigation();
   const [messages, setMessages] = useState([
-    { id: '1', text: 'Hello! How can I help you today?', sender: 'ai' },
+    { id: '1', text: 'Hello!', sender: 'other' },
+    { id: '2', text: 'Hi there!', sender: 'user' },
   ]);
   const [inputText, setInputText] = useState('');
+
+  useLayoutEffect(() => {
+    navigation.getParent()?.setOptions({
+      tabBarStyle: { display: 'none' },
+    });
+    return () => navigation.getParent()?.setOptions({ tabBarStyle: { display: 'flex' } });
+  }, [navigation]);
 
   const handleSendMessage = () => {
     if (inputText.trim().length > 0) {
       setMessages([...messages, { id: Date.now().toString(), text: inputText, sender: 'user' }]);
       setInputText('');
-      // Here you would typically call an AI service and get a response
-      // For now, we'll just simulate a response
-      setTimeout(() => {
-        setMessages(prevMessages => [...prevMessages, { id: Date.now().toString(), text: 'This is a simulated AI response.', sender: 'ai' }]);
-      }, 1000);
     }
   };
 
   const renderMessage = ({ item }) => (
-    <View style={[styles.messageContainer, item.sender === 'user' ? styles.userMessageContainer : styles.aiMessageContainer]}>
+    <View style={[styles.messageContainer, item.sender === 'user' ? styles.userMessageContainer : styles.otherMessageContainer]}>
       <Text style={styles.messageText}>{item.text}</Text>
     </View>
   );
@@ -48,8 +53,8 @@ const AiScreen = () => {
             placeholder="Type a message..."
             placeholderTextColor="#888"
           />
-          <TouchableOpacity style={styles.micButton} onPress={handleSendMessage}>
-            <MaterialIcons name="mic" size={28} color="#fff" />
+          <TouchableOpacity style={styles.sendButton} onPress={handleSendMessage}>
+            <Text style={styles.sendButtonText}>Send</Text>
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
@@ -78,7 +83,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#2196F3',
     alignSelf: 'flex-end',
   },
-  aiMessageContainer: {
+  otherMessageContainer: {
     backgroundColor: '#f0f0f0',
     alignSelf: 'flex-start',
   },
@@ -102,19 +107,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginRight: 16,
   },
-  micButton: {
+  sendButton: {
     backgroundColor: '#2196F3',
-    borderRadius: 30,
-    width: 60,
-    height: 60,
-    justifyContent: 'center',
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 5,
+    borderRadius: 24,
+    paddingVertical: 12,
+    paddingHorizontal: 18,
+  },
+  sendButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 
-export default AiScreen;
+export default ChatScreen;
