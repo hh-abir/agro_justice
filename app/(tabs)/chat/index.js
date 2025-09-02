@@ -34,7 +34,7 @@ const ChatListScreen = () => {
   const router = useRouter();
 
   const renderChat = ({ item }) => (
-    <TouchableOpacity style={styles.chatItem} onPress={() => router.push(`/(tabs)/chat/${item.id}`)}>
+    <TouchableOpacity style={styles.chatItem} onPress={() => router.push({ pathname: `/(tabs)/chat/${item.id}`, params: { name: item.name } })} > 
       <Image source={{ uri: item.avatar }} style={styles.avatar} />
       <View style={styles.chatContent}>
         <Text style={styles.chatName}>{item.name}</Text>
