@@ -1,7 +1,6 @@
 
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 import { useRouter } from 'expo-router';
+import { Image, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
 
 export default function LoginScreen() {
   const router = useRouter();
@@ -12,7 +11,7 @@ export default function LoginScreen() {
       style={styles.container}
     >
       <Image
-        source={{ uri: 'https://picsum.photos/200/200?random=10' }}
+        source={{ uri: 'https://source.unsplash.com/random/200x200/?logo,farming' }}
         style={styles.logo}
       />
       <Text style={styles.title}>AgroJustice</Text>
@@ -29,15 +28,13 @@ export default function LoginScreen() {
       />
       <TouchableOpacity
         style={styles.button}
-        onPress={() => {
-          // Handle farmer login
-        }}
+        onPress={() => router.push('/(farmer)/dashboard')}
       >
         <Text style={styles.buttonText}>Login as Farmer</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => router.push('/(tabs)')}
+        onPress={() => router.push('/(customer)')} 
       >
         <Text style={styles.buttonText}>Login as Customer</Text>
       </TouchableOpacity>

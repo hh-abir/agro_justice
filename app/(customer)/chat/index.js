@@ -4,23 +4,23 @@ import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const activeUsers = [
-  { id: '1', name: 'John Doe', avatar: 'https://picsum.photos/200/200?random=21' },
-  { id: '2', name: 'Jane Smith', avatar: 'https://picsum.photos/200/200?random=22' },
-  { id: '3', name: 'Bob Johnson', avatar: 'https://picsum.photos/200/200?random=23' },
-  { id: '4', name: 'Alice Williams', avatar: 'https://picsum.photos/200/200?random=24' },
-  { id: '5', name: 'Chris Brown', avatar: 'https://picsum.photos/200/200?random=25' },
-  { id: '6', name: 'Emily Jones', avatar: 'https://picsum.photos/200/200?random=26' },
+  { id: '1', name: 'John Doe', avatar: 'https://picsum.photos/200/200?random=31' },
+  { id: '2', name: 'Jane Smith', avatar: 'https://picsum.photos/200/200?random=32' },
+  { id: '3', name: 'Bob Johnson', avatar: 'https://picsum.photos/200/200?random=33' },
+  { id: '4', name: 'Alice Williams', avatar: 'https://picsum.photos/200/200?random=34' },
+  { id: '5', name: 'Chris Brown', avatar: 'https://picsum.photos/200/200?random=35' },
+  { id: '6', name: 'Emily Jones', avatar: 'https://picsum.photos/200/200?random=36' },
 ];
 
 const chats = [
-  { id: '1', name: 'John Doe', lastMessage: 'See you tomorrow!', avatar: 'https://picsum.photos/200/200?random=15' },
-  { id: '2', name: 'Jane Smith', lastMessage: 'Okay, sounds good.', avatar: 'https://picsum.photos/200/200?random=16' },
-  { id: '3', name: 'Bob Johnson', lastMessage: 'Can you send me the file?', avatar: 'https://picsum.photos/200/200?random=17' },
-  { id: '4', name: 'Alice Williams', lastMessage: 'I will be there in 5 minutes.', avatar: 'https://picsum.photos/200/200?random=18' },
-  { id: '5', name: 'Chris Brown', lastMessage: 'Thanks for your help!', avatar: 'https://picsum.photos/200/200?random=19' },
-  { id: '6', name: 'Emily Jones', lastMessage: 'Let\'s catch up later.', avatar: 'https://picsum.photos/200/200?random=20' },
-  { id: '7', name: 'David Miller', lastMessage: 'Can you call me back?', avatar: 'https://picsum.photos/200/200?random=27' },
-  { id: '8', name: 'Sarah Wilson', lastMessage: 'I have a question.', avatar: 'https://picsum.photos/200/200?random=28' },
+  { id: '1', name: 'John Doe', lastMessage: 'See you tomorrow!', avatar: 'https://picsum.photos/200/200?random=37' },
+  { id: '2', name: 'Jane Smith', lastMessage: 'Okay, sounds good.', avatar: 'https://picsum.photos/200/200?random=38' },
+  { id: '3', name: 'Bob Johnson', lastMessage: 'Can you send me the file?', avatar: 'https://picsum.photos/200/200?random=39' },
+  { id: '4', name: 'Alice Williams', lastMessage: 'I will be there in 5 minutes.', avatar: 'https://picsum.photos/200/200?random=40' },
+  { id: '5', name: 'Chris Brown', lastMessage: 'Thanks for your help!', avatar: 'https://picsum.photos/200/200?random=41' },
+  { id: '6', name: 'Emily Jones', lastMessage: "Let's catch up later.", avatar: 'https://picsum.photos/200/200?random=42' },
+  { id: '7', name: 'David Miller', lastMessage: 'Can you call me back?', avatar: 'https://picsum.photos/200/200?random=43' },
+  { id: '8', name: 'Sarah Wilson', lastMessage: 'I have a question.', avatar: 'https://picsum.photos/200/200?random=44' },
 ];
 
 const ActiveUserAvatar = ({ user }) => (
@@ -34,7 +34,7 @@ const ChatListScreen = () => {
   const router = useRouter();
 
   const renderChat = ({ item }) => (
-    <TouchableOpacity style={styles.chatItem} onPress={() => router.push({ pathname: `/(tabs)/chat/${item.id}`, params: { name: item.name } })} > 
+    <TouchableOpacity style={styles.chatItem} onPress={() => router.push({ pathname: `/(customer)/chat/${item.id}`, params: { name: item.name } })} > 
       <Image source={{ uri: item.avatar }} style={styles.avatar} />
       <View style={styles.chatContent}>
         <Text style={styles.chatName}>{item.name}</Text>
