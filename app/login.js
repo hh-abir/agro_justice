@@ -1,4 +1,3 @@
-
 import { useRouter } from 'expo-router';
 import { Image, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
 
@@ -11,7 +10,7 @@ export default function LoginScreen() {
       style={styles.container}
     >
       <Image
-        source={{ uri: 'https://source.unsplash.com/random/200x200/?logo,farming' }}
+        source={{ uri: 'https://picsum.photos/200/200?random=100' }}
         style={styles.logo}
       />
       <Text style={styles.title}>AgroJustice</Text>
