@@ -11,10 +11,8 @@
 
 ## 📽️ Project Showcase
 *Check out the app in action:*
-<video width="320" height="240" controls>
-  <source src="https://github.com/user-attachments/assets/68b99096-816c-4ddd-a89e-70d803637b8a" type="video/mp4">
-  
-</video>
+<video src="https://github.com/user-attachments/assets/68b99096-816c-4ddd-a89e-70d803637b8a"></video>
+
 ---
 
 ## 📉 The Problem
